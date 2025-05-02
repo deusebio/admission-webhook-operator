@@ -24,13 +24,12 @@ jobs:
           pip install pylint flake8
 
       - name: Run tox tests to create coverage.xml
-        run: |
-          
+        run: tox run -e unit
 
       - name: move results to necessary folder for TICS
         run: |
           mkdir cover
-          
+          mv coverage.xml cover/coverage.xml
 
       - name: Run TICS analysis with github-action
         uses: tiobe/tics-github-action@v3
